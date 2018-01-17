@@ -16,6 +16,19 @@
     white-space: normal;
 }
 
+#kqhead {
+    color: dodgerblue;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#kqhead:hover {
+    cursor: pointer;
+}
+
 .profile-div {
     width: 15vw;
     height: 15vw;
@@ -24,7 +37,7 @@
     margin: auto;
     margin-top: 1.5vw;
     margin-bottom: 1.5vw;
-    overflow:hidden;
+    overflow: hidden;
     border-radius: 100%;
 }
 

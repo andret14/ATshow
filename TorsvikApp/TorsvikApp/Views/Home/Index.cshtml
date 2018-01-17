@@ -37,8 +37,32 @@
 
 <script>
     $(document).ready(function () {
-        var current = "about"
+        var current = "about";
 
+        var submit = function () {
+            var http = new XMLHttpRequest();
 
+            http.open("POST", '@Url.Action("MainContent")', true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    $('#cont').html(http.responseText);
+                    if (current == "about") {
+                        $('#cont-button').html("About").trigger("create");
+                        current = "cv";
+                    }
+                    else {
+                        $('#cont-button').html("CV").trigger("create");
+                        current = "about";
+                    }
+                }
+            }
+            http.send("cont=" + ((current == "about") ? "cv" : "about"));
+        }
+
+        $('#cont-button').click(function () {
+            submit();
+        });
     });
 </script>
