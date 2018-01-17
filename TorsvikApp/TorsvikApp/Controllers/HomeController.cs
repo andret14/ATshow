@@ -26,5 +26,18 @@ namespace TorsvikApp.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult MainContent(string cont)
+        {
+            if (cont.Equals("about"))
+            {
+                return PartialView("_About");
+            }
+            else
+            {
+                return PartialView("_CV");
+            }
+        }
     }
 }
