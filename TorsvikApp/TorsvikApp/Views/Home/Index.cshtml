@@ -25,14 +25,15 @@
     </div>
     <div class="col-sm-9">
         <div class="row" style="margin-top:1.5vw">
-            <div class="col-md-5">
+            <div class="col-md-2" style="text-align:center">
                 <button class="btn btn-lg btn-primary" type="button" style="margin:auto" id="cont-button">CV</button>
             </div>
-            <div class="col-md-7">
-                <h1 id="cont-title" style="display:inline">about</h1>
+            <div class="col-md-8" style="text-align:center">
+                <h1 id="cont-title" style="display:inline">About</h1>
             </div>
+            <div class="col-md-2"></div>
         </div>
-        <div class="row" id="cont">
+        <div class="row" id="cont" style="margin-left:1.5vw">
             @Html.Partial("_About")
         </div>
     </div>
@@ -55,10 +56,12 @@
                     $('#cont').html(http.responseText);
                     if (current == "about") {
                         $('#cont-button').html("About").trigger("create");
+                        $('#cont-title').html("Curriculum Vitae").trigger("create");
                         current = "cv";
                     }
                     else {
                         $('#cont-button').html("CV").trigger("create");
+                        $('#cont-title').html("About").trigger("create");
                         current = "about";
                     }
                 }
