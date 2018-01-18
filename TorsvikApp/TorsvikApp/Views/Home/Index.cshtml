@@ -25,7 +25,12 @@
     </div>
     <div class="col-sm-9">
         <div class="row" style="margin-top:1.5vw">
-            <button class="btn btn-primary" type="button" style="margin:auto" id="cont-button">CV</button>
+            <div class="col-md-5">
+                <button class="btn btn-lg btn-primary" type="button" style="margin:auto" id="cont-button">CV</button>
+            </div>
+            <div class="col-md-7">
+                <h1 id="cont-title" style="display:inline">about</h1>
+            </div>
         </div>
         <div class="row" id="cont">
             @Html.Partial("_About")
