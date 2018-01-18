@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -21,14 +22,8 @@
             });
 
             FB.getLoginStatus(function (response) {
-                if (response.status === 'connected') {
-                    console.log('Logged in.');
-                }
-                else {
-                    FB.login();
-                }
+                console.log(response);
             });
-
         };
 
         (function (d, s, id) {
@@ -38,8 +33,6 @@
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-
-        
     </script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -80,8 +73,8 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Choose Log-in</h4>
                 </div>
-                <div class="modal-body">
-
+                <div class="modal-body" style="text-align:center">
+                    <div class="fb-login-button" id="fb-lb" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -93,12 +86,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script>
-        $(document).ready(function () {
-
-        });
-    </script>
 
 </body>
 
