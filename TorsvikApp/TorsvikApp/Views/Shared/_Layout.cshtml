@@ -20,10 +20,21 @@
                 xfbml: true,
                 version: 'v2.11'
             });
+            
+        };
 
-            FB.getLoginStatus(function (response) {
-                console.log(response);
+        function fbLogout() {
+            FB.logout();
+            $('#loginsection').html("<li><a style=\"cursor:pointer; user - select: none\">Register</a></li>" +
+                "<li><a id=\"login\" style=\"cursor:pointer; user-select: none\" data-toggle=\"modal\" data-target=\"#login-modal\">Log in</a></li>");
+        };
+
+        function fbLogin () {
+            console.log("fbLogin called");
+            FB.api('/me', { fields: 'first_name' }, function (response) {
+                $('#loginsection').html("<li><a>" + response.first_name + "</a></li><li><a id=\"logout\" onclick=\"fbLogout()\">Log Out</a></li>");
             });
+            $("#login-modal").modal("hide");
         };
 
         (function (d, s, id) {
@@ -51,7 +62,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" id="loginsection">
                     <li><a style="cursor:pointer; user-select: none">Register</a></li>
                     <li><a id="login" style="cursor:pointer; user-select: none" data-toggle="modal" data-target="#login-modal">Log in</a></li>
                 </ul>
@@ -74,7 +85,7 @@
                     <h4 class="modal-title">Choose Log-in</h4>
                 </div>
                 <div class="modal-body" style="text-align:center">
-                    <div class="fb-login-button" id="fb-lb" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <div class="fb-login-button" id="fb-lb" data-max-rows="1" data-size="large" data-button-type="continue_with" onlogin="fbLogin()"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
