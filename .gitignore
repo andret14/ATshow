@@ -2,4 +2,4 @@
 *.jpeg
 *.png
 *.gif
-Torsvik**\App_Data\secrets.xml
+**/App_Data/secrets.xml
